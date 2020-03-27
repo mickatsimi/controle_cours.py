@@ -1,17 +1,20 @@
 """
-Controle de connaissances 
+Controle de connaissances
 Tout est à faire en pur python respectez bien le nommage des variables
 
     Question 1 : Fonction
-    Créer une fonction appelée sup21 qui renvoie si un nombre est supérieur ou égal à 21"""
+    Créer une fonction appelée sup21 qui renvoie si un nombre est supérieur ou égal à 21
 
     >>> sup21(21)
     True
     >>> sup21(2)
     False
+"""
+
 
 def sup21(n):
-    return n>=21
+    return n >= 21
+
 
 sup21(21)
 sup21(2)
@@ -23,30 +26,36 @@ sup21(2)
     >>> pairs([1,2,3])
     [2]
 """
-def pairs(x):
-    
-    return [i for i in x if i%2==0]
 
-pairs([1,2,3])
+
+def pairs(x):
+
+    return [i for i in x if i % 2 == 0]
+
+
+pairs([1, 2, 3])
 """
     >>> pairs([1,2,3])
     [2]
     """
- 
+
 """
     Question 3 : Création de fonction
     Créer une fonction 'ajout4' qui prend en paramètre une liste et
     renvoie une nouvelle liste avec l'entier 4 ajouté à la fin.
     Vous ne devez pas modifier la liste de départ
 
-    
+
 """
+
+
 def ajout4(k):
-    return k+[4]
+    return k + [4]
+
 
 ajout4([])
-ajout4([1,2,4])
-l = [1,2,3]
+ajout4([1, 2, 4])
+l = [1, 2, 3]
 _ = ajout4(l)
 l
 """
@@ -62,13 +71,15 @@ l
     >>> to_strings({1:2,3:4})
     ['1:2', '3:4']
 """
+
+
 def to_strings(l):
-    return [str(i)+":"+str(j) for i,j in zip(l.keys(),l.values())]
+    return [str(i) + ":" + str(j) for i, j in zip(l.keys(), l.values())]
 
-to_strings({1:2})
+
+to_strings({1: 2})
 to_strings({})
-to_strings({1:2,3:4})
-
+to_strings({1: 2, 3: 4})
 
 
 """
@@ -79,12 +90,14 @@ to_strings({1:2,3:4})
     >>> extremites(['a', 'b', 'c', 'd', 'e'])
     ['a', 'b', 'd', 'e']
 """
-def extremites(a):
-    
-    
-    return a[0:2]+a[-2:]
 
-extremites(['a', 'b', 'c', 'd', 'e'])
+
+def extremites(a):
+
+    return a[0:2] + a[-2:]
+
+
+extremites(["a", "b", "c", "d", "e"])
 
 """
     Question 6
@@ -92,32 +105,37 @@ extremites(['a', 'b', 'c', 'd', 'e'])
     qui prend en paramètre un caractère et renvoie le nombre d'occurences de ce
     caractère dans le mot. Attenton cela ne doit pas être sensible à la casse
 """
+
+
 class Mot:
-    
     def __init__(self, mot):
         self.mot = mot
 
     def comptelettre(self, lettre):
-        return self.mot.count(lettre.lower())+ self.mot.count(lettre.upper())
+        return self.mot.count(lettre.lower()) + self.mot.count(lettre.upper())
 
-mot = Mot('Bonjour')
+
+mot = Mot("Bonjour")
 mot.mot
-mot.comptelettre('o')
-mot.comptelettre('B') == mot.comptelettre('b') == 1
-    
+mot.comptelettre("o")
+mot.comptelettre("B") == mot.comptelettre("b") == 1
+
 """
     Question 7
     Créer une fonction 'tri_et_inverse' qui prend en paramètre une liste
     et renvoie (sans modifier la liste de départ) la liste triée et la liste départ mais dans le sens inverse
 
 """
-def tri_et_inverse(x):
-    
-    return (sorted(x),list(reversed(x)))
 
-maliste = [4,7,6]
+
+def tri_et_inverse(x):
+
+    return (sorted(x), list(reversed(x)))
+
+
+maliste = [4, 7, 6]
 tri_et_inverse(maliste)
-maliste == [4,7,6]
+maliste == [4, 7, 6]
 
 """
     Question 8: while et entrée utilisateur
@@ -135,39 +153,39 @@ maliste == [4,7,6]
     ...         return next(self._iter)
     ...
     ...
-    >>> list(aller_a_paris(input_call=fake_input(['Barcelone', "Madrid", "Paris"]))) 
+    >>> list(aller_a_paris(input_call=fake_input(['Barcelone', "Madrid", "Paris"])))
     [3, 'Paris']
     >>> aller_a_paris(input_call=fake_input(['Barcelone', "paris"]))
     (2, 'Paris')
 """
 
+
 class fake_input:
     def __init__(self, saisies):
-         self._iter = iter(saisies)
-         
+        self._iter = iter(saisies)
+
     def __call__(self, *args, **kwargs):
         return next(self._iter)
 
 
 def aller_a_paris(input_call=input):
     """
-    >>> list(aller_a_paris(input_call=fake_input(['Barcelone', "Madrid", "Paris"]))) 
+    >>> list(aller_a_paris(input_call=fake_input(['Barcelone', "Madrid", "Paris"])))
     [3, 'Paris']
     >>> aller_a_paris(input_call=fake_input(['Barcelone', "paris"]))
     (2, 'Paris')
     """
-    saisie = ''
+    saisie = ""
     nb = 0
-    while saisie.lower() != 'paris':
-        saisie = input_call('Entrez le mot paris :')
-        nb+=1
-    return nb,'Paris'
-    
+    while saisie.lower() != "paris":
+        saisie = input_call("Entrez le mot paris :")
+        nb += 1
+    return nb, "Paris"
 
-list(aller_a_paris(input_call=fake_input(['Barcelone', "Madrid", "Paris"]))) 
-aller_a_paris(input_call=fake_input(['Barcelone', "paris"]))
 
-    
+list(aller_a_paris(input_call=fake_input(["Barcelone", "Madrid", "Paris"])))
+aller_a_paris(input_call=fake_input(["Barcelone", "paris"]))
+
 
 """
     Question 9
@@ -183,9 +201,14 @@ aller_a_paris(input_call=fake_input(['Barcelone', "paris"]))
     ['Paris:France', 'Berlin:Allemagne', 'Madrid:Espagne', 'Moscou:Russie']
 """
 
-ville_nom_pays = {'Paris':'France','Berlin':'Allemagne','Madrid':'Espagne','Moscou':'Russie'}
-'Paris' in ville_nom_pays
-'Espagne' in list(ville_nom_pays.values())
+ville_nom_pays = {
+    "Paris": "France",
+    "Berlin": "Allemagne",
+    "Madrid": "Espagne",
+    "Moscou": "Russie",
+}
+"Paris" in ville_nom_pays
+"Espagne" in list(ville_nom_pays.values())
 to_strings(ville_nom_pays)
 
 """
@@ -208,7 +231,7 @@ to_strings(ville_nom_pays)
     False
     >>> italie.nom
     'Italie'
-    
+
     - Créer un dictionnaire 'ville_pays' avec les capitales comme clefs et les
     instances de pays comme valeurs. Pour Paris, Berlin, Mardrid et Moscou.
     Il faut un visa pour aller en Russie.
@@ -218,8 +241,9 @@ to_strings(ville_nom_pays)
     True
     >>> ville_pays['Berlin'].visa
     False
-    
+
 """
+
 
 class Pays:
     """
@@ -240,22 +264,22 @@ class Pays:
         self.visa = visa
 
 
-italie = Pays('Italie', False)
+italie = Pays("Italie", False)
 italie.visa
 italie.nom
 
-France = Pays('France',False)
-Allemagne = Pays('Allemagne',False)
-Espagne = Pays('Espagne',False)
-Russie = Pays('Russie',True)
-ville_pays = {'Paris':France,'Berlin':Allemagne,'Madrid':Espagne,'Moscou':Russie}
-ville_pays['Moscou'].visa
-ville_pays['Berlin'].visa
-
+France = Pays("France", False)
+Allemagne = Pays("Allemagne", False)
+Espagne = Pays("Espagne", False)
+Russie = Pays("Russie", True)
+ville_pays = {"Paris": France, "Berlin": Allemagne, "Madrid": Espagne, "Moscou": Russie}
+ville_pays["Moscou"].visa
+ville_pays["Berlin"].visa
 
 
 if __name__ == "__main__":
     import doctest
+
     if True:
         doctest.testmod(verbose=True, optionflags=512)
     else:
